@@ -72,9 +72,6 @@ namespace RosFinMonitoringAPI
 
             Console.WriteLine(responseString);
 
-            // Парсит Json ответ в объект, из которого потом можно получить значения по ключу.
-            JSONobject = JsonConvert.DeserializeObject(responseString);
-
             // Записываем полученный с сервера файл.
             StreamWriter sw = new StreamWriter($"{outputPath}\\TE2-{DateTime.Parse(JSONobject?.date).ToString("dd.MM.yyyy")}.zip");
             sw.Write(response);
@@ -120,9 +117,6 @@ namespace RosFinMonitoringAPI
 
             Console.WriteLine(responseString);
 
-            // Парсит Json ответ в объект, из которого потом можно получить значения по ключу.
-            JSONobject = JsonConvert.DeserializeObject(responseString);
-
             // Записываем полученный с сервера файл.
             StreamWriter sw = new StreamWriter($"{outputPath}\\MVK-{DateTime.Parse(JSONobject?.date).ToString("dd.MM.yyyy")}.zip");
             sw.Write(response);
@@ -167,9 +161,6 @@ namespace RosFinMonitoringAPI
             responseString = await response.Content.ReadAsStringAsync();
 
             Console.WriteLine(responseString);
-
-            // Парсит Json ответ в объект, из которого потом можно получить значения по ключу.
-            JSONobject = JsonConvert.DeserializeObject(responseString);
 
             // Записываем полученный с сервера файл.
             StreamWriter sw = new StreamWriter($"{outputPath}\\OMU-{DateTime.Parse(JSONobject?.date).ToString("dd.MM.yyyy")}.zip");
