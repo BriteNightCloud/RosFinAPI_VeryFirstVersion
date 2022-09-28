@@ -25,16 +25,17 @@ namespace RosFinMonitoringAPI
                 sr.Close();
 
                 // Проверка файла config.json на корректность
-                if (string.IsNullOrEmpty(JSONcfg?.userName.Value) ||
-                    string.IsNullOrEmpty(JSONcfg?.password.Value) ||
-                    string.IsNullOrEmpty(JSONcfg?.certificate.Value))
-                    throw new Exception("Некорректные данные в файле config.json некорректы! Удалите файл и запустите программу еще раз." + 
+                if (string.IsNullOrEmpty(JSONcfg?.outputPath?.Value) ||
+                    string.IsNullOrEmpty(JSONcfg?.userName?.Value) ||
+                    string.IsNullOrEmpty(JSONcfg?.password?.Value) ||
+                    string.IsNullOrEmpty(JSONcfg?.certificate?.Value))
+                    throw new Exception("Некорректный формат файла config.json! Удалите файл и запустите программу еще раз." + 
                         $"\n{Directory.GetCurrentDirectory()}\\config.json");
 
                 // Проверка файла config.json на заполнение данных
-                if (JSONcfg?.userName.Value == "YourUsernameHere" ||
-                    JSONcfg?.password.Value == "YourPasswordHere" ||
-                    JSONcfg?.certificate.Value == "certID")
+                if (JSONcfg?.userName?.Value == "YourUsernameHere" ||
+                    JSONcfg?.password?.Value == "YourPasswordHere" ||
+                    JSONcfg?.certificate?.Value == "certID")
                     throw new Exception("Необходимо поменять данные для авторизации в файле и перезапустить программу." + 
                         $"\n{Directory.GetCurrentDirectory()}\\config.json");
             }
@@ -43,6 +44,7 @@ namespace RosFinMonitoringAPI
                 // Задаем шаблон файла
                 var defaultCfg = new Dictionary<string, string>
                 {
+                    { "outputPath", "C:\\" },
                     { "userName", "YourUsernameHere" },
                     { "password", "YourPasswordHere" },
                     { "certificate", "idkYet" }

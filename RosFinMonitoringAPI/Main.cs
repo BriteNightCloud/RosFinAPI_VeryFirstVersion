@@ -16,11 +16,6 @@ namespace RosFinMonitoringAPI
 #endif
 
         /// <summary>
-        /// Путь, куда сохранять файлы (без слешей в конце)
-        /// </summary>
-        static readonly string outputPath = "C:";
-
-        /// <summary>
         /// Подгружает логин, пароль и сертификат из config файла.
         /// </summary>
         static dynamic? JSONcfg;
