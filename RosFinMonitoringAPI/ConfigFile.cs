@@ -28,14 +28,14 @@ namespace RosFinMonitoringAPI
                 if (string.IsNullOrEmpty(JSONcfg?.outputPath?.Value) ||
                     string.IsNullOrEmpty(JSONcfg?.userName?.Value) ||
                     string.IsNullOrEmpty(JSONcfg?.password?.Value) ||
-                    string.IsNullOrEmpty(JSONcfg?.certificate?.Value))
+                    string.IsNullOrEmpty(JSONcfg?.certName?.Value))
                     throw new Exception("Некорректный формат файла config.json! Удалите файл и запустите программу еще раз." + 
                         $"\n{Directory.GetCurrentDirectory()}\\config.json");
 
                 // Проверка файла config.json на заполнение данных
                 if (JSONcfg?.userName?.Value == "YourUsernameHere" ||
                     JSONcfg?.password?.Value == "YourPasswordHere" ||
-                    JSONcfg?.certificate?.Value == "certID")
+                    JSONcfg?.certName?.Value == "FileName.cer")
                     throw new Exception("Необходимо поменять данные для авторизации в файле и перезапустить программу." + 
                         $"\n{Directory.GetCurrentDirectory()}\\config.json");
             }
@@ -47,7 +47,7 @@ namespace RosFinMonitoringAPI
                     { "outputPath", "C:\\" },
                     { "userName", "YourUsernameHere" },
                     { "password", "YourPasswordHere" },
-                    { "certificate", "idkYet" }
+                    { "certName", "FileName.cer" }
                 };
 
                 // Создаем новый файл и открываем его для записи

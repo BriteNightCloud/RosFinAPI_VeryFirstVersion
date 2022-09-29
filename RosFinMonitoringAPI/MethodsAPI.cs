@@ -25,6 +25,10 @@ namespace RosFinMonitoringAPI
 
             var responseString = await response.Content.ReadAsStringAsync();
 
+            if (!String.IsNullOrEmpty(response?.ReasonPhrase) && response?.ReasonPhrase == "Forbidden")
+                throw new Exception("Ошибка 403. Доступ запрещен. Необходимо проверить логин, пароль и сертификат в файле config.json!" +
+                    $"\n{Directory.GetCurrentDirectory()}\\config.json");
+
             // Устанавливает текущий токен сессии.
             // Проще говоря запоминает авторизацию.
             dynamic? JSONobject = JsonConvert.DeserializeObject(responseString);

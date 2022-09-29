@@ -10,17 +10,12 @@ namespace RosFinMonitoringAPI
         /// <returns></returns>
         static X509Certificate2 GetCert()
         {
-            //
-            // TODO:
-            //
-            // Спиздить ключ от личного кабинета из КриптоПРО
-            //
-            // Сейчас "new X509Certificate2()" тупо как заглушка, потом убрать это
-            // и присвоить туда сертификат, полученый из КриптоПРО.
-            //
+            // Считываем сертификат из файла
+            byte[] rawData = File.ReadAllBytes($"{Directory.GetCurrentDirectory()}\\{JSONcfg?.certName?.Value}");
+            // Создаем объект сертификата
+            X509Certificate2 cert = new X509Certificate2(rawData);
 
-            X509Certificate2 cert = new X509Certificate2();
-
+            // Возвращаем объект сертификата
             return cert;
         }
     }
