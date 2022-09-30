@@ -2,6 +2,8 @@
 // Если не определено, вызывает методы API в штатном режиме
 #define testconturAPI
 
+using System.Text;
+
 namespace RosFinMonitoringAPI
 {
     internal partial class Program
@@ -31,6 +33,7 @@ namespace RosFinMonitoringAPI
         }
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             try
             {
                 // Получает данные из config.json файла, если файл не существует, создает его
